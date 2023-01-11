@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    padding: 0;
+  
+}
+
+
+
+
+div h3 {
+    margin-top: 45px;
+    margin-bottom: 10px;
+}
+
+.container {
+    margin: 0 10px 0;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+   
+}
+
+main {
+    width: 65%;
+}
+
+
+#current img {
+    width: 20%;
+
+    margin-right: 20%;
+}
+
+#pet {
+    display: flex;
+}
+
+.card {
+  
+    width: 18%;
+    margin: 5px;
+    padding: 5px;
+    color: white;
+    border-radius: 8px;
+}
+
+button {
+    background: lightblue;
+    color: white;
+    margin: 5px;
+}
+
+#history {
+    display: flex ;
+    flex-direction: column; 
+    margin: 0 20px;
+}
