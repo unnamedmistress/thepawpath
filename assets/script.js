@@ -56,6 +56,8 @@ const makeCall = () => {
 let animal = 'cat';//link animal search to text field
 let zip = '33710'//link zip to text field
 let miles = '50' //link miles to text field
+let div = document.createElement('div')
+div.style.border = '1px solid black';
 
 function callAPI() {
   fetch(`https://api.rescuegroups.org/v5/public/animals/search/${animal}s&sort=-animals.updatedDate`, {
@@ -81,10 +83,26 @@ function callAPI() {
       console.log(data.data[0].attributes);
       for (let i = 0; i < data.data.length; i++){
         console.log(data.data[i].attributes);
+        let newDiv = document.createElement('div')
+        newDiv.classList.add(`NewDiv-${i}`);
+        newDiv.style.backgroundColor='coral';
+        //class animal index - append to class index
         //add pictureURL, DescriptionHTML, sex, distance,name to the page
+        //use index to push into an array then add locations to the array of objects
         let petImage = data.data[i].attributes.pictureThumbnailUrl;
+        let img = document.createElement('img');
+        img.src = petImage;
+        newDiv.appendChild(img);
+        
+
+// set the innerHTML of the div
+
+// append the div to the body of the HTML page
+ 
+       
         console.log(petImage);
         let animalName = data.data[i].attributes.name;
+        
         console.log(animalName);
         let animalGender = data.data[i].attributes.sex;
         console.log(animalGender);
@@ -94,7 +112,23 @@ function callAPI() {
          console.log(description);
          let locationId = data.data[i].relationships.orgs.data[0].id;
          console.log(locationId);
-        
+         let name = document.createElement('p');
+         name.innerHTML = animalName;
+         newDiv.appendChild(name);
+         
+         let gender = document.createElement('p');
+         gender.innerHTML = animalGender;
+         newDiv.appendChild(gender);
+         
+         let distanceP = document.createElement('p');
+         distanceP.innerHTML = `Distance = `+ distance + `miles away`;
+         newDiv.appendChild(distanceP);
+         
+         let descriptionP = document.createElement('p');
+         descriptionP.innerHTML = description;
+         newDiv.appendChild(descriptionP);
+       
+         document.querySelector('.results').appendChild(newDiv);
          callLocation(locationId);
         
          
@@ -117,6 +151,8 @@ function callLocation(locationId) {
           console.log(location);
 
           //add location URL, phone, street, city and zip to the page
+          let locationDiv = document.createElement('div');
+          locationDiv.classList.add("relative", "mt-1", "rounded-md", "shadow-sm","pointer-events-none", "absolute", "inset-y-0", "left-0", "flex", "items-center", "pl-3" );
           let url = location.data[0].attributes.url;
           console.log(url);
           let phone = location.data[0].attributes.phone
@@ -127,7 +163,16 @@ function callLocation(locationId) {
           console.log(citystate);
           let postalcode = location.data[0].attributes.postalcode;
           console.log(postalcode);
-
+          
+          locationDiv.innerHTML = `
+          <p>URL: ${url}</p>
+          <p>Phone: ${phone}</p>
+          <p>Street: ${street}</p>
+          <p>City and State: ${citystate}</p>
+          <p>Postal Code: ${postalcode}</p>
+          `;
+          
+          document.querySelector('.results').appendChild(locationDiv);
         
       });
   }
