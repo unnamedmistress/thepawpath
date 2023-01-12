@@ -34,3 +34,22 @@ const makeCall = () => {
   }
 };
  getOAuth();
+
+ function getApi(apiToken){
+  console.log(apiToken);
+  fetch(`https://api.petfinder.com/v2/animals?client_id=${clientId}&client_secret=${clientSecret}&type=dog&page=2`, {
+    method: 'GET',
+    // mode: 'no-cors',
+    headers: {
+      'Content-Type':'application/json',
+      'Authorization': `Bearer ${apiToken}`
+    }
+  })
+  .then(function(response) {
+    return response.json()
+    // console.log(response);
+  })
+  .then(function (data) {
+    console.log(data);
+  });
+}
