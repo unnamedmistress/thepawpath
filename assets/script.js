@@ -53,7 +53,7 @@ const makeCall = () => {
     console.log(data);
   });
 }
-et animal = 'cat';//link animal search to text field
+let animal = 'cat';//link animal search to text field
 let zip = '33710'//link zip to text field
 let miles = '50' //link miles to text field
 
