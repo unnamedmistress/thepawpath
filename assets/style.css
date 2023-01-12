@@ -8,8 +8,8 @@ body {
 
 
 div h3 {
-    margin-top: 45px;
-    margin-bottom: 10px;
+    margin-block-start: 45px;
+    margin-block-end: 10px;
 }
 
 .container {
@@ -21,19 +21,19 @@ div h3 {
 aside {
     display: flex;
     flex-direction: column;
-    width: 25%;
+    inline-size: 25%;
    
 }
 
 main {
-    width: 65%;
+    inline-size: 65%;
 }
 
 
 #current img {
-    width: 20%;
+    inline-size: 20%;
 
-    margin-right: 20%;
+    margin-inline-end: 20%;
 }
 
 #pet {
@@ -42,7 +42,7 @@ main {
 
 .card {
   
-    width: 18%;
+    inline-size: 18%;
     margin: 5px;
     padding: 5px;
     color: white;
