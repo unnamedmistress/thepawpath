@@ -22,7 +22,7 @@ aside {
     display: flex;
     flex-direction: column;
     inline-size: 25%;
-   
+   margin: 40px;
 }
 
 main {
