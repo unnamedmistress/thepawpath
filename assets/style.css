@@ -67,7 +67,6 @@ button {
     flex-direction: column; 
     margin: 0 20px;
 }
-<<<<<<< HEAD
 #currentPet{
     display: flex;
     flex-direction: row;
@@ -95,10 +94,8 @@ button {
 }
 
 
-=======
 
 #map {
     height: 400px; /* The height is 400 pixels */
     width: 100%; /* The width is the width of the web page */
   }
->>>>>>> fd3b51ecdc45ce38483ed26cedf5e4e739feac8a
