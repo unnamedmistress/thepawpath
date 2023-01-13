@@ -74,7 +74,7 @@ function callLocation(locationId) {
           console.log(postalcode);
 
         
-      });
+      }); 
   }
 
 
