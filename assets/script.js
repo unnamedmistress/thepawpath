@@ -1,8 +1,10 @@
-let animal = 'cat';//link animal search to text field
-let zip = '33710'//link zip to text field
-let miles = '50' //link miles to text field
+let animal = document.getElementById('pet')
+let zip = document.getElementById('location')
 let div = document.createElement('div')
 div.style.border = '1px solid black';
+
+
+
 
 function callAPI() {
   fetch(`https://api.rescuegroups.org/v5/public/animals/search/${animal}s&sort=-animals.updatedDate`, {
