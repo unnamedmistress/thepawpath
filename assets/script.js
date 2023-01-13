@@ -129,6 +129,7 @@ function callLocation(locationId) {
     }
 }
 
+// need to fix markers
 function geocodeAddress(locationId, animalName, map) {
   var geocoder = new google.maps.Geocoder();
   geocoder.geocode({ 'address': address }, function (results, status) {
