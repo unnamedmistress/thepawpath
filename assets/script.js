@@ -1,58 +1,3 @@
-let clientId = 'W750HoqDetVYtZcaio7lrtxXBtnpimCWRzkOJBw9BpphKqsBe9';
-let clientSecret = 'Ob6WnCJFvLCt9IfrVpQTlxlc2pfu7FCDCk5NR1g9';
-let token;
-
-
-// Get OAuth token
-const getOAuth = function() {
-  return fetch('https://api.petfinder.com/v2/oauth2/token', {
-      method: 'POST',
-      body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`,
-      headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-      }
-  }).then(function(response) {
-      return response.json();
-  }).then(function(data) {
-    console.log(data);
-      // Store token data
-      token = data.access_token;
-      tokenType = data.token_type;
-      expires = new Date().getTime() + (data.expires_in * 1000);
-
-      getApi(token);
-    });
-};
-
-// Make call if token expired
-const makeCall = () => {
-  // If current token is invalid, get a new one
-  if (!expires || expires - new Date().getTime() < 1) {
-      getOAuth().then(function() {
-          // use access token
-      });
-  }
-};
- getOAuth();
-
- function getApi(apiToken){
-  console.log(apiToken);
-  fetch(`https://api.petfinder.com/v2/animals?client_id=${clientId}&client_secret=${clientSecret}&type=dog&page=2`, {
-    method: 'GET',
-    // mode: 'no-cors',
-    headers: {
-      'Content-Type':'application/json',
-      'Authorization': `Bearer ${apiToken}`
-    }
-  })
-  .then(function(response) {
-    return response.json()
-    // console.log(response);
-  })
-  .then(function (data) {
-    console.log(data);
-  });
-}
 let animal = 'cat';//link animal search to text field
 let zip = '33710'//link zip to text field
 let miles = '50' //link miles to text field
@@ -174,11 +119,38 @@ function callLocation(locationId) {
           
           document.querySelector('.results').appendChild(locationDiv);
         
-      });
+      }); 
   }
 
 
   callAPI();
 
 
- 
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: { lat: 37.7749, lng: -122.4194 }
+    });
+
+    for (let i = 0; i < data.data.length; i++) {
+        let address = data.data[i].attributes.location;
+        let animalName = data.data[i].attributes.name;
+        geocodeAddress(locationId, animalName, map);
+    }
+}
+
+function geocodeAddress(locationId, animalName, map) {
+  var geocoder = new google.maps.Geocoder();
+  geocoder.geocode({ 'address': address }, function (results, status) {
+      if (status === 'OK') {
+          var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location,
+              title: animalName
+          });
+      } else {
+          console.log('Geocode was not successful for the following reason: ' + status);
+      }
+  });
+}
+
