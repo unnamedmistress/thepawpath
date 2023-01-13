@@ -1,9 +1,35 @@
-let animal = 'cat';//link animal search to text field
-let zip = '33710'//link zip to text field
+const error = document.querySelector('#error-message');
+let animal = document.querySelector('#Pet'); 
+// cat';//link animal search to text field
+let zip = document.querySelector('#location');
+// '33710'//link zip to text field
 let miles = '50' //link miles to text field
+let searchBtn = document.querySelector('#search');
 let div = document.createElement('div')
 div.style.border = '1px solid black';
 let petDiv = document.getElementById('currentpet')
+
+// Click search button function
+function getResults (event) {
+  // Get the input value from animal type
+  let animalType = animal.value.trim();
+  animal.value = "";
+  // Get input value from zipcode
+  let zipCode = zip.value.trim();
+  zip.value = "";
+  event.preventDefault();
+// Error message if don't input dog/cat
+  if (animalType.toLowerCase() !== "dog" && 
+  animalType.toLowerCase() !== "cat") {
+      errorMessage.innerHTML = "You must search for a dog or cat!";
+
+  } else {
+      errorMessage.innerHTML = "";
+  }
+};
+  searchBtn.addEventListener('click', function(getResults){});
+
+
 
 function callAPI() {
   fetch(`https://api.rescuegroups.org/v5/public/animals/search/${animal}s&sort=-animals.updatedDate`, {
