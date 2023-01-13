@@ -1,11 +1,9 @@
+
 body {
-    margin: 0;
-    padding: 0;
-  
+    margin: 5%;
+    padding: 2%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
-
-
 
 div h3 {
     margin-block-start: 45px;
@@ -15,6 +13,7 @@ div h3 {
 .container {
     margin: 0 10px 0;
     padding: 10px;
+    display:flex;
     justify-content: space-between;
 }
 
@@ -26,7 +25,8 @@ aside {
 }
 
 main {
-    inline-size: 65%;
+    display:flex;
+    
 }
 
 
@@ -60,3 +60,30 @@ button {
     flex-direction: column; 
     margin: 0 20px;
 }
+#currentPet{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 35%;
+
+}
+#petlocation{
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: absolute; /* inner divs are positioned absolute to the container */
+    width: auto; /* set the width of the inner divs */
+    height: auto;
+    margin-left: 36%;
+    
+}
+#petcontainer {
+    position: absolute; /* container is positioned relative to its parent element */
+    width: 90%; /* set the width of the container*/
+    height: auto; /* set the height of the container */
+    display: flex;
+    flex-direction: column;
+    margin-top: 15%;
+}
+
+
