@@ -1,4 +1,3 @@
-
 let animal = 'cat';//link animal search to text field
 let zip = '33710'//link zip to text field
 let miles = '50' //link miles to text field
@@ -106,8 +105,6 @@ function callLocation(locationId) {
           <br>
           <br>
           <br
-
-
           `;
        
           document.querySelector('#petlocation').appendChild(locationDiv);
@@ -118,4 +115,32 @@ function callLocation(locationId) {
 
 
   callAPI();
+
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: { lat: 37.7749, lng: -122.4194 }
+    });
+
+    for (let i = 0; i < data.data.length; i++) {
+        let address = data.data[i].attributes.location;
+        let animalName = data.data[i].attributes.name;
+        geocodeAddress(locationId, animalName, map);
+    }
+}
+
+function geocodeAddress(locationId, animalName, map) {
+  var geocoder = new google.maps.Geocoder();
+  geocoder.geocode({ 'address': address }, function (results, status) {
+      if (status === 'OK') {
+          var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location,
+              title: animalName
+          });
+      } else {
+          console.log('Geocode was not successful for the following reason: ' + status);
+      }
+  });
+}
 
