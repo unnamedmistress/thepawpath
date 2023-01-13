@@ -22,10 +22,12 @@ aside {
     flex-direction: column;
     inline-size: 25%;
    margin: 40px;
+  
 }
 aside h3 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 30px;
+    
 }
 #search:hover {
     box-shadow: 1px 1px 3px 2px blue;
@@ -67,7 +69,6 @@ button {
     flex-direction: column; 
     margin: 0 20px;
 }
-<<<<<<< HEAD
 #currentPet{
     display: flex;
     flex-direction: row;
@@ -95,10 +96,8 @@ button {
 }
 
 
-=======
 
 #map {
     height: 400px; /* The height is 400 pixels */
     width: 100%; /* The width is the width of the web page */
   }
->>>>>>> fd3b51ecdc45ce38483ed26cedf5e4e739feac8a
