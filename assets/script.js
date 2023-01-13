@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> fd3b51ecdc45ce38483ed26cedf5e4e739feac8a
 let animal = 'cat';//link animal search to text field
 let zip = '33710'//link zip to text field
 let miles = '50' //link miles to text field
@@ -73,15 +69,27 @@ function callLocation(locationId) {
           let street = location.data[0].attributes.street;
           let citystate = location.data[0].attributes.citystate;
           let postalcode = location.data[0].attributes.postalcode;
-          console.log(postalcode);
-
-        
-      }); 
+          locationDiv.innerHTML = `
+          <p>URL:"${url}"</p>
+          <p>Phone: ${phone}</p>
+          <p>Street: ${street}</p>
+          <p>City and State: ${citystate}</p>
+          <p>Postal Code: ${postalcode}</p>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br
+          `;
+       
+          document.querySelector('#petlocation').appendChild(locationDiv);
+         
+          
+      });
   }
 
 
   callAPI();
-
 
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
