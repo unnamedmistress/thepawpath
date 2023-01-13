@@ -1,10 +1,12 @@
+
+let zip = document.getElementById('location')
 const error = document.querySelector('#error-message');
 let animal = document.querySelector('#Pet'); 
 // cat';//link animal search to text field
-let zip = document.querySelector('#location');
 // '33710'//link zip to text field
 let miles = '50' //link miles to text field
 let searchBtn = document.querySelector('#search');
+
 let div = document.createElement('div')
 div.style.border = '1px solid black';
 let petDiv = document.getElementById('currentpet')
@@ -28,6 +30,9 @@ function getResults (event) {
   }
 };
   searchBtn.addEventListener('click', function(getResults){});
+
+
+
 
 
 
