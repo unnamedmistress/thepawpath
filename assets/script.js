@@ -3,6 +3,7 @@ let zip = '33710'//link zip to text field
 let miles = '50' //link miles to text field
 let div = document.createElement('div')
 div.style.border = '1px solid black';
+let petDiv = document.getElementById('currentpet')
 
 function callAPI() {
   fetch(`https://api.rescuegroups.org/v5/public/animals/search/${animal}s&sort=-animals.updatedDate`, {
@@ -31,25 +32,29 @@ function callAPI() {
         //add pictureURL, DescriptionHTML, sex, distance,name to the page
         //use index to push into an array then add locations to the array of objects
         let petImage = data.data[i].attributes.pictureThumbnailUrl;
-        console.log(petImage);
         let animalName = data.data[i].attributes.name;
-        console.log(animalName);
         let animalGender = data.data[i].attributes.sex;
-        console.log(animalGender);
         let distance = data.data[i].attributes.distance;
-         console.log(distance);
          let description = data.data[i].attributes.descriptionHtml;
-         console.log(description);
          let locationId = data.data[i].relationships.orgs.data[0].id;
-         console.log(locationId);
-        
+
+         let petInfo = `
+         <img src="${petImage}">
+         <h2>Name: ${animalName}</h2>
+         <h3>Gender: ${animalGender}</h3>
+         <h3>Distance: ${distance} miles away</h3>
+         <h3>Description: ${description}</h3>
+     `;
+     petDiv.innerHTML += petInfo;
          callLocation(locationId);
          
          
       }
     });
 }
-
+let citystate = '';
+let postalcode = '';
+let street = '';
 function callLocation(locationId) {
     fetch(`https://api.rescuegroups.org/v5/public/orgs/${locationId}`, {
         method: 'GET',
@@ -66,9 +71,10 @@ function callLocation(locationId) {
           //add location URL, phone, street, city and zip to the page
           let url = location.data[0].attributes.url;
           let phone = location.data[0].attributes.phone
-          let street = location.data[0].attributes.street;
-          let citystate = location.data[0].attributes.citystate;
-          let postalcode = location.data[0].attributes.postalcode;
+          street = location.data[0].attributes.street;
+          citystate = location.data[0].attributes.citystate;
+          postalcode = location.data[0].attributes.postalcode;
+          let locationDiv = document.createElement('div');
           locationDiv.innerHTML = `
           <p>URL:"${url}"</p>
           <p>Phone: ${phone}</p>
