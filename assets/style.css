@@ -4,9 +4,6 @@ body {
   
 }
 
-
-
-
 div h3 {
     margin-block-start: 45px;
     margin-block-end: 10px;
@@ -23,10 +20,12 @@ aside {
     flex-direction: column;
     inline-size: 25%;
    margin: 40px;
+  
 }
 aside h3 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 30px;
+    
 }
 #search:hover {
     box-shadow: 1px 1px 3px 2px blue;
