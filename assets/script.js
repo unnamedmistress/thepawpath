@@ -38,15 +38,7 @@ function callAPI() {
          let description = data.data[i].attributes.descriptionHtml;
          let locationId = data.data[i].relationships.orgs.data[0].id;
 
-         let petInfo = `
-         <img src="${petImage}">
-         <h2>Name: ${animalName}</h2>
-         <h3>Gender: ${animalGender}</h3>
-         <h3>Distance: ${distance} miles away</h3>
-         <h3>Description: ${description}</h3>
-     `;
-     petDiv.innerHTML += petInfo;
-         callLocation(locationId);
+         callLocation(locationId,petImage,animalName, distance,description,animalGender);
          
          
       }
@@ -55,7 +47,7 @@ function callAPI() {
 let citystate = '';
 let postalcode = '';
 let street = '';
-function callLocation(locationId) {
+function callLocation(locationId,petImage,animalName, distance,description,animalGender) {
     fetch(`https://api.rescuegroups.org/v5/public/orgs/${locationId}`, {
         method: 'GET',
         headers: {
@@ -76,16 +68,15 @@ function callLocation(locationId) {
           postalcode = location.data[0].attributes.postalcode;
           let locationDiv = document.createElement('div');
           locationDiv.innerHTML = `
-          <p>URL:"${url}"</p>
-          <p>Phone: ${phone}</p>
-          <p>Street: ${street}</p>
+          <img src="${petImage}">
+          <p>Hi! My name is:<strong> ${animalName}</strong>. 
+          I am a ${animalGender}. 
+          Here is what some humans say about me:${description}
+          I am about ${distance} miles away from you</p>
+          <a href="${url}"> Click here to Find me!</a>
           <p>City and State: ${citystate}</p>
           <p>Postal Code: ${postalcode}</p>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br
+        
           `;
        
           document.querySelector('#petlocation').appendChild(locationDiv);
