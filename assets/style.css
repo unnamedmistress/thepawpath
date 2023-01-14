@@ -69,13 +69,6 @@ button {
     flex-direction: column; 
     margin: 0 20px;
 }
-#currentpet{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 35%;
-
-}
 #petlocation{
     display:flex;
     flex-direction: column;
@@ -83,20 +76,28 @@ button {
     position: absolute; /* inner divs are positioned absolute to the container */
     width: auto; /* set the width of the inner divs */
     height: auto;
-    margin-left: 36%;
+ 
     
 }
 #petcontainer {
     position: absolute; /* container is positioned relative to its parent element */
-    width: 90%; /* set the width of the container*/
+    width: 70%; /* set the width of the container*/
     height: auto; /* set the height of the container */
     display: flex;
     flex-direction: column;
-    margin-top: 15%;
+    margin-top: 35%;
+    
 }
 
-
-
+#eachPet{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+}
+img{
+    width: 200px;
+    height: auto;
+}
 #map {
     height: 400px; /* The height is 400 pixels */
     width: 100%; /* The width is the width of the web page */

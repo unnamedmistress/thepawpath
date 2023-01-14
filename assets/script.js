@@ -1,11 +1,13 @@
-let animal = 'cat';//link animal search to text field
-let zip = '33710'//link zip to text field
-let miles = '50' //link miles to text field
-let div = document.createElement('div')
-div.style.border = '1px solid black';
-let petDiv = document.getElementById('currentpet')
 
-function callAPI() {
+const button = document.getElementById("search");
+
+button.addEventListener("click", function callAPI() {
+  let animal = document.querySelector('#pet').value;
+  let zip = document.querySelector('#location').value;
+  let miles = '50';
+  let div = document.createElement('div');
+  div.style.border = '1px solid black';
+  let petDiv = document.getElementById('currentpet');
   fetch(`https://api.rescuegroups.org/v5/public/animals/search/${animal}s&sort=-animals.updatedDate`, {
     method: 'POST',
     headers: {
@@ -35,27 +37,19 @@ function callAPI() {
         let animalName = data.data[i].attributes.name;
         let animalGender = data.data[i].attributes.sex;
         let distance = data.data[i].attributes.distance;
-         let description = data.data[i].attributes.descriptionHtml;
+         let description = data.data[i].attributes.descriptionText;
          let locationId = data.data[i].relationships.orgs.data[0].id;
-
-         let petInfo = `
-         <img src="${petImage}">
-         <h2>Name: ${animalName}</h2>
-         <h3>Gender: ${animalGender}</h3>
-         <h3>Distance: ${distance} miles away</h3>
-         <h3>Description: ${description}</h3>
-     `;
-     petDiv.innerHTML += petInfo;
-         callLocation(locationId);
+console.log(description);
+         callLocation(locationId,petImage,animalName, distance,description,animalGender);
          
          
       }
     });
-}
+})
 let citystate = '';
 let postalcode = '';
 let street = '';
-function callLocation(locationId) {
+function callLocation(locationId,petImage,animalName, distance,description,animalGender) {
     fetch(`https://api.rescuegroups.org/v5/public/orgs/${locationId}`, {
         method: 'GET',
         headers: {
@@ -76,16 +70,16 @@ function callLocation(locationId) {
           postalcode = location.data[0].attributes.postalcode;
           let locationDiv = document.createElement('div');
           locationDiv.innerHTML = `
-          <p>URL:"${url}"</p>
-          <p>Phone: ${phone}</p>
-          <p>Street: ${street}</p>
+          <div id = 'eachPet'>
+          <img src="${petImage}">
+          <p>Hi! My name is:<strong> ${animalName}</strong>. 
+          I am a ${animalGender}. 
+          Here is what some humans say about me:${description}
+          I am about ${distance} miles away from you</p>
+          <a href="${url}"> Click here to Find me!</a>
           <p>City and State: ${citystate}</p>
           <p>Postal Code: ${postalcode}</p>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br
+        </div>
           `;
        
           document.querySelector('#petlocation').appendChild(locationDiv);
