@@ -63,7 +63,11 @@ function callAPI() {
        
         //  Call the location API
       callLocation(locationId,petImage,animalName, distance,description,animalGender, function callBack(petLocation){
-            // create a marker for each location
+                //  Center the map to the first location
+                  if(i === 0){
+                  map.setCenter(petLocation);
+                   }
+              // create a marker for each location
               var marker = new google.maps.Marker({
               // icon: {
               //   url: 'paw_print.png',
