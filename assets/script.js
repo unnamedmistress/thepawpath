@@ -1,15 +1,16 @@
 let geoApi = 'AIzaSyC7KptZv_AlWMLmOh6A_AjA_tuc5vJTZ64';
 const button = document.getElementById("search");
 
-// function initMap() {
-//   var map = new google.maps.Map(document.getElementById('map'), {
-//       zoom: 8,
-//       center: { lat: 37.7749, lng: -122.4194 }
-//   });
-//   return map;
-// }
+// Initialize GoogleMaps
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 8,
+      center: { lat: 37.7749, lng: -122.4194 }
+  });
+  return map;
+}
 
-button.addEventListener("click", function callAPI() {
+function callAPI() {
   let animal = document.querySelector('#pet').value;
   let zip = document.querySelector('#location').value;
   let miles = '50';
@@ -36,12 +37,13 @@ button.addEventListener("click", function callAPI() {
     })
     .then(function (data) {
 
-      // var map = initMap();
+      // Call the map
+      var map = initMap();
       //  Initialize the map
-       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 13,
-        center: { lat: 37.7749, lng: -122.4194 }
-    });
+    //    var map = new google.maps.Map(document.getElementById('map'), {
+    //     zoom: 13,
+    //     center: { lat: 37.7749, lng: -122.4194 }
+    // });
         
       
 
@@ -71,7 +73,7 @@ console.log(description);
          
       }
   });
-})
+}
 
 
 function callLocation(locationId,petImage,animalName, distance,description,animalGender, cb) {
@@ -139,6 +141,9 @@ function callLocation(locationId,petImage,animalName, distance,description,anima
 
 
   
-
+  button.addEventListener("click", function() {
+    callAPI();
+    document.getElementById('map').style.display = "block";
+  });
 
 
