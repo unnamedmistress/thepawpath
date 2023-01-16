@@ -1,15 +1,18 @@
+// Global Variables
 let geoApi = 'AIzaSyC7KptZv_AlWMLmOh6A_AjA_tuc5vJTZ64';
 const button = document.getElementById("search");
 
-// function initMap() {
-//   var map = new google.maps.Map(document.getElementById('map'), {
-//       zoom: 8,
-//       center: { lat: 37.7749, lng: -122.4194 }
-//   });
-//   return map;
-// }
+// Initialize GoogleMaps
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 8,
+      center: { lat: 37.7749, lng: -122.4194 }
+  });
+  return map;
+}
 
-button.addEventListener("click", function callAPI() {
+function callAPI() {
+  // Get user input for animal and zipcode
   let animal = document.querySelector('#pet').value;
   let zip = document.querySelector('#location').value;
   let miles = '50';
@@ -36,13 +39,13 @@ button.addEventListener("click", function callAPI() {
     })
     .then(function (data) {
 
-      // var map = initMap();
-      //  Initialize the map
-       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 13,
-        center: { lat: 37.7749, lng: -122.4194 }
-    });
-        
+
+      // Call the map
+      var map = initMap();
+      // Create the info window
+      var infoWindow = new google.maps.InfoWindow({
+      content: `<div>Organization Name</div><div>Address</div>`
+      });
       
 
     
@@ -56,25 +59,34 @@ button.addEventListener("click", function callAPI() {
         let distance = data.data[i].attributes.distance;
          let description = data.data[i].attributes.descriptionText;
          let locationId = data.data[i].relationships.orgs.data[0].id;
-console.log(description);
+        console.log(description);
        
-  //  Call the location API
-      callLocation(locationId,petImage,animalName, distance,description,animalGender, function cb(petLocation){
+        //  Call the location API
+      callLocation(locationId,petImage,animalName, distance,description,animalGender, function callBack(petLocation){
             // create a marker for each location
               var marker = new google.maps.Marker({
-                // icon:
+              // icon: {
+              //   url: 'paw_print.png',
+              //   scaledSize: new google.maps.Size(50, 50)
+              // },
               position: petLocation,
               map: map,
+              
+            });
+
+            // Associate the info window with clicking the marker
+            marker.addListener('click', function() {
+            infoWindow.open(map, marker);
             });
 
           });      
          
       }
   });
-})
+}
 
 
-function callLocation(locationId,petImage,animalName, distance,description,animalGender, cb) {
+function callLocation(locationId,petImage,animalName, distance,description,animalGender, callBack) {
     fetch(`https://api.rescuegroups.org/v5/public/orgs/${locationId}`, {
         method: 'GET',
         headers: {
@@ -130,7 +142,7 @@ function callLocation(locationId,petImage,animalName, distance,description,anima
           let petLocation = { lat: lat, lng: lng };
           // Make sure pet address is actually converting to lat/lon
           console.log(petLocation);
-          cb(petLocation);
+          callBack(petLocation);
           
       });
          
@@ -138,7 +150,11 @@ function callLocation(locationId,petImage,animalName, distance,description,anima
   }
 
 
-  
-
+  // Event listener for search button
+  button.addEventListener("click", function() {
+    callAPI();
+    // Display map on click
+    document.getElementById('map').style.display = "block";
+  });
 
 
