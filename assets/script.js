@@ -1,3 +1,4 @@
+// Global Variables
 let geoApi = 'AIzaSyC7KptZv_AlWMLmOh6A_AjA_tuc5vJTZ64';
 const button = document.getElementById("search");
 
@@ -11,6 +12,7 @@ function initMap() {
 }
 
 function callAPI() {
+  // Get user input for animal and zipcode
   let animal = document.querySelector('#pet').value;
   let zip = document.querySelector('#location').value;
   let miles = '50';
@@ -45,13 +47,6 @@ function callAPI() {
       content: `<div>Organization Name</div><div>Address</div>`
       });
       
-      //  Initialize the map
-    //    var map = new google.maps.Map(document.getElementById('map'), {
-    //     zoom: 13,
-    //     center: { lat: 37.7749, lng: -122.4194 }
-    // });
-        
-      
 
     
       for (let i = 0; i < data.data.length; i++){
@@ -64,16 +59,16 @@ function callAPI() {
         let distance = data.data[i].attributes.distance;
          let description = data.data[i].attributes.descriptionText;
          let locationId = data.data[i].relationships.orgs.data[0].id;
-console.log(description);
+        console.log(description);
        
-  //  Call the location API
+        //  Call the location API
       callLocation(locationId,petImage,animalName, distance,description,animalGender, function callBack(petLocation){
             // create a marker for each location
               var marker = new google.maps.Marker({
-              icon: {
-                url: 'paw_print.png',
-                scaledSize: new google.maps.Size(50, 50)
-              },
+              // icon: {
+              //   url: 'paw_print.png',
+              //   scaledSize: new google.maps.Size(50, 50)
+              // },
               position: petLocation,
               map: map,
               
