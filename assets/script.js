@@ -1,6 +1,14 @@
 let geoApi = 'AIzaSyC7KptZv_AlWMLmOh6A_AjA_tuc5vJTZ64';
 const button = document.getElementById("search");
 
+// function initMap() {
+//   var map = new google.maps.Map(document.getElementById('map'), {
+//       zoom: 8,
+//       center: { lat: 37.7749, lng: -122.4194 }
+//   });
+//   return map;
+// }
+
 button.addEventListener("click", function callAPI() {
   let animal = document.querySelector('#pet').value;
   let zip = document.querySelector('#location').value;
@@ -27,13 +35,16 @@ button.addEventListener("click", function callAPI() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
-         
-      // Initialize the map
-         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 8,
-          center: { lat: 37.7749, lng: -122.4194 }
-      });
+
+      // var map = initMap();
+      //  Initialize the map
+       var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 13,
+        center: { lat: 37.7749, lng: -122.4194 }
+    });
+        
+      
+
     
       for (let i = 0; i < data.data.length; i++){
         console.log(data.data[i].attributes);
@@ -51,17 +62,18 @@ console.log(description);
       callLocation(locationId,petImage,animalName, distance,description,animalGender, function cb(petLocation){
             // create a marker for each location
               var marker = new google.maps.Marker({
+                // icon:
               position: petLocation,
               map: map,
             });
+
           });      
          
       }
   });
 })
-// let citystate = '';
-// let postalcode = '';
-// let street = '';
+
+
 function callLocation(locationId,petImage,animalName, distance,description,animalGender, cb) {
     fetch(`https://api.rescuegroups.org/v5/public/orgs/${locationId}`, {
         method: 'GET',
@@ -105,13 +117,14 @@ function callLocation(locationId,petImage,animalName, distance,description,anima
         fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${geoApi}`)
         .then(function (response) {
             return response.json();
-            console.log(response);
+            
         })
         .then(function (data) {
+          // turn pet address into lat/lon coordinates
           let lat = data.results[0].geometry.location.lat;
           let lng = data.results[0].geometry.location.lng;
           let petLocation = { lat: lat, lng: lng };
-          // Make sure pet address is turning into lat/lon
+          // Make sure pet address is actually converting to lat/lon
           console.log(petLocation);
           cb(petLocation);
           
@@ -121,34 +134,7 @@ function callLocation(locationId,petImage,animalName, distance,description,anima
   }
 
 
-  callAPI();
+  
 
-//   function initMap() {
-//     var map = new google.maps.Map(document.getElementById('map'), {
-//         zoom: 8,
-//         center: { lat: 37.7749, lng: -122.4194 }
-//     });
 
-//     for (let i = 0; i < data.data.length; i++) {
-//         let address = data.data[i].attributes.location;
-//         let animalName = data.data[i].attributes.name;
-//         geocodeAddress(locationId, animalName, map);
-//     }
-// }
-
-// // need to fix markers
-// function geocodeAddress(locationId, animalName, map) {
-//   var geocoder = new google.maps.Geocoder();
-//   geocoder.geocode({ 'address': address }, function (results, status) {
-//       if (status === 'OK') {
-//           var marker = new google.maps.Marker({
-//               map: map,
-//               position: results[0].geometry.location,
-//               title: animalName
-//           });
-//       } else {
-//           console.log('Geocode was not successful for the following reason: ' + status);
-//       }
-//   });
-// }
 
