@@ -37,8 +37,14 @@ function callAPI() {
     })
     .then(function (data) {
 
+
       // Call the map
       var map = initMap();
+      // Create the info window
+      var infoWindow = new google.maps.InfoWindow({
+      content: `<div>Organization Name</div><div>Address</div>`
+      });
+      
       //  Initialize the map
     //    var map = new google.maps.Map(document.getElementById('map'), {
     //     zoom: 13,
@@ -67,6 +73,11 @@ console.log(description);
                 // icon:
               position: petLocation,
               map: map,
+            });
+
+            // Associate the info window with clicking the marker
+            marker.addListener('click', function() {
+            infoWindow.open(map, marker);
             });
 
           });      
