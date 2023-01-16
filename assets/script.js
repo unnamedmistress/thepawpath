@@ -72,11 +72,15 @@ function callLocation(locationId,petImage,animalName, distance,description,anima
           locationDiv.innerHTML = `
           <div id = 'eachPet'>
           <img src="${petImage}">
-          <p>Hi! My name is:<strong> ${animalName}</strong>. 
+          <p>Hi! My name is:<strong> ${animalName}</strong>.
+          <br>
           I am a ${animalGender}. 
-          Here is what some humans say about me:${description}
+          <br>
+         About me: ${description}
+          <br>
+          
           I am about ${distance} miles away from you</p>
-          <a href="${url}"> Click here to Find me!</a>
+          <a href="${url}"><em>Click here to Find me!</em></a>
           <p>City and State: ${citystate}</p>
           <p>Postal Code: ${postalcode}</p>
         </div>
