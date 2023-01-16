@@ -67,12 +67,16 @@ function callAPI() {
 console.log(description);
        
   //  Call the location API
-      callLocation(locationId,petImage,animalName, distance,description,animalGender, function cb(petLocation){
+      callLocation(locationId,petImage,animalName, distance,description,animalGender, function callBack(petLocation){
             // create a marker for each location
               var marker = new google.maps.Marker({
-                // icon:
+              icon: {
+                url: 'paw_print.png',
+                scaledSize: new google.maps.Size(50, 50)
+              },
               position: petLocation,
               map: map,
+              
             });
 
             // Associate the info window with clicking the marker
@@ -87,7 +91,7 @@ console.log(description);
 }
 
 
-function callLocation(locationId,petImage,animalName, distance,description,animalGender, cb) {
+function callLocation(locationId,petImage,animalName, distance,description,animalGender, callBack) {
     fetch(`https://api.rescuegroups.org/v5/public/orgs/${locationId}`, {
         method: 'GET',
         headers: {
@@ -143,7 +147,7 @@ function callLocation(locationId,petImage,animalName, distance,description,anima
           let petLocation = { lat: lat, lng: lng };
           // Make sure pet address is actually converting to lat/lon
           console.log(petLocation);
-          cb(petLocation);
+          callBack(petLocation);
           
       });
          
@@ -151,9 +155,10 @@ function callLocation(locationId,petImage,animalName, distance,description,anima
   }
 
 
-  
+  // Event listener for search button
   button.addEventListener("click", function() {
     callAPI();
+    // Display map on click
     document.getElementById('map').style.display = "block";
   });
 
