@@ -2,11 +2,12 @@
 let geoApi = 'AIzaSyC7KptZv_AlWMLmOh6A_AjA_tuc5vJTZ64';
 const button = document.getElementById("search");
 
+
 // Initialize GoogleMaps
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 8,
-      center: { lat: 37.7749, lng: -122.4194 }
+      center: { lat: 28.538336, lng: -81.379234 }
   });
   return map;
 }
@@ -38,16 +39,12 @@ function callAPI() {
       return response.json();
     })
     .then(function (data) {
+      console.log(data);
 
 
       // Call the map
       var map = initMap();
-      // Create the info window
-      var infoWindow = new google.maps.InfoWindow({
-      content: `<div>Organization Name</div><div>Address</div>`
-      });
       
-
     
       for (let i = 0; i < data.data.length; i++){
         console.log(data.data[i].attributes);
@@ -62,7 +59,7 @@ function callAPI() {
         console.log(description);
        
         //  Call the location API
-      callLocation(locationId,petImage,animalName, distance,description,animalGender, function callBack(petLocation){
+      callLocation(locationId,petImage,animalName, distance,description,animalGender, function callBack(petLocation, infoWindow){
                 //  Center the map to the first location
                   if(i === 0){
                   map.setCenter(petLocation);
@@ -133,6 +130,15 @@ function callLocation(locationId,petImage,animalName, distance,description,anima
        
           document.querySelector('#petlocation').appendChild(locationDiv);
          
+           // Create the info window for map marker
+        var infoWindow = new google.maps.InfoWindow({
+          content: `
+              <div>Organization Name: </div>
+              <div>Address: ${address}</div>
+              <div>Phone: ${phone}</div>
+              <div>URL: <a href="${url}">${url}</a></div>
+          `
+      });
           // Call the google geocode api
         fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${geoApi}`)
         .then(function (response) {
@@ -146,7 +152,8 @@ function callLocation(locationId,petImage,animalName, distance,description,anima
           let petLocation = { lat: lat, lng: lng };
           // Make sure pet address is actually converting to lat/lon
           console.log(petLocation);
-          callBack(petLocation);
+          // Pass the location coordinates and info window to the callback function
+          callBack(petLocation, infoWindow);
           
       });
          
