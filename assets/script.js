@@ -112,10 +112,13 @@ function callLocation(locationId,petImage,animalName, distance,description,anima
           console.log(address);
           let locationDiv = document.createElement('div');
           // locationDiv.className = "w-1/2 text-center mx-auto";
+          
           locationDiv.innerHTML = `
            <div id = 'eachPet'>
-          <img src="${petImage}">
-          <p>Hi! My name is:<strong> ${animalName}</strong>.
+           <div class="max-w-sm rounded overflow-hidden shadow-lg">
+          <img class="w-full" src="${petImage}">
+          <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2">Hi! My name is:<strong> ${animalName}</strong>.</div>
           <br>
           I am a ${animalGender}. 
           <br>
@@ -124,9 +127,10 @@ function callLocation(locationId,petImage,animalName, distance,description,anima
           
           I am about ${distance} miles away from you</p>
           <a href="${url}"><em>Click here to Find me!</em></a>
-          <p>City and State: ${citystate}</p>
-          <p>Postal Code: ${postalcode}</p>
-        </div>
+          <div class="px-6 pt-4 pb-2">
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">City and State: ${citystate}</span>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Postal Code: ${postalcode}</span>
+         
           `;
        
           document.querySelector('#petlocation').appendChild(locationDiv);
