@@ -114,7 +114,7 @@ function callLocation(locationId,petImage,animalName, distance,description,anima
           // locationDiv.className = "w-1/2 text-center mx-auto";
           locationDiv.innerHTML = `
            <div id = 'eachPet'>
-          <img src="${petImage}">
+          <img src="${petImage}" alt = 'pet'>
           <p>Hi! My name is:<strong> ${animalName}</strong>.
           <br>
           I am a ${animalGender}. 
