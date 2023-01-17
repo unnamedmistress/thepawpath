@@ -111,8 +111,9 @@ function callLocation(locationId,petImage,animalName, distance,description,anima
           // Check to see if turning into address correctly
           console.log(address);
           let locationDiv = document.createElement('div');
+          // locationDiv.className = "w-1/2 text-center mx-auto";
           locationDiv.innerHTML = `
-          <div id = 'eachPet'>
+           <div id = 'eachPet'>
           <img src="${petImage}">
           <p>Hi! My name is:<strong> ${animalName}</strong>.
           <br>
@@ -134,9 +135,9 @@ function callLocation(locationId,petImage,animalName, distance,description,anima
         var infoWindow = new google.maps.InfoWindow({
           content: `
               <div>Organization Name: </div>
-              <div>Address: ${address}</div>
-              <div>Phone: ${phone}</div>
-              <div>URL: <a href="${url}">${url}</a></div>
+              <div><strong>${address}</strong></div>
+              <div><strong>${phone}</strong></div>
+              <div><a href="${url}"><strong>${url}</strong></a></div>
           `
       });
           // Call the google geocode api
