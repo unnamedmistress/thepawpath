@@ -118,7 +118,7 @@ function callLocation(locationId,petImage,animalName, distance,description,anima
            <div id = 'eachPet' class = "w-1/2">
 
           <img src="${petImage}" alt = 'pet'>
-          <p>Hi! My name is:<strong> ${animalName}</strong>.
+          <p id = 'scroll' >Hi! My name is:<strong> ${animalName}</strong>.
 
           <br>
           I am a ${animalGender}. 
