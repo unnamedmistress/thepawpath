@@ -97,8 +97,8 @@ img{
     height: 250px;
 }
 #map {
-    height: 400px; /* The height is 400 pixels */
-    width: 50%; /* The width is the width of the web page */
+    height: 400px; 
+    width: 50%; /* 50% of page */
     display: none;
   }
 #eachPet {
