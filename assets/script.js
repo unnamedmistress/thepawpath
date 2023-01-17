@@ -111,8 +111,9 @@ function callLocation(locationId,petImage,animalName, distance,description,anima
           // Check to see if turning into address correctly
           console.log(address);
           let locationDiv = document.createElement('div');
+          // locationDiv.className = "w-1/2 text-center mx-auto";
           locationDiv.innerHTML = `
-          <div id = 'eachPet'>
+           <div id = 'eachPet'>
           <img src="${petImage}">
           <p>Hi! My name is:<strong> ${animalName}</strong>.
           <br>
