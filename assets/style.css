@@ -59,25 +59,15 @@ button {
     margin: 5px;
 }
 
-#petlocation{
-    display:flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    position: absolute; /* inner divs are positioned absolute to the container */
-    width: 800px; /* set the width of the inner divs */
-    height: auto;
-    background-color: white;
-   
-    
-}
 #petcontainer {
-    position: absolute; /* container is positioned relative to its parent element */
-    width: 70%; /* set the width of the container*/
+    position: absolute; /* container is positioned relative to its parent element */ /* set the width of the container*/
     height: auto; /* set the height of the container */
     display: flex;
-    flex-direction: column;
-    margin-top: 53%;
+    flex-wrap:wrap;
+    flex-direction: row;
     margin-left: 80px;
+    width: 100%;
+    margin-bottom: 10%;
     
 }
 #petImage {
