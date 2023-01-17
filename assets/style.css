@@ -25,7 +25,8 @@ aside {
     display: flex;
     flex-direction: column;
     inline-size: 25%;
-   margin: 120px;
+   margin-left: 3%;
+   margin-bottom: 10%;
   
 }
 aside h3 {
@@ -82,7 +83,9 @@ button {
 #petImage {
     width: 100%;
     height: 350px;
-   
+
+    margin-left: 200px
+
 }
 
 #eachPet{
@@ -93,13 +96,17 @@ button {
 }
 img{
   border-radius: 8px;
-    width: 50px;
-    height: 250px;
+
+    width: 175px;
+    height: auto;
+
 }
 #map {
-    height: 400px; 
-    width: 50%; /* 50% of page */
+
+    height: 300px; /* The height is 400 pixels */
+    width: 40%; /* The width is the width of the web page */
     display: none;
+    margin-left: 3%;
   }
 #eachPet {
     border: 1px lightgrey solid;
