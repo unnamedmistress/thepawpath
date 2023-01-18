@@ -69,10 +69,6 @@ function callAPI() {
                    }
               // create a marker for each location
               var marker = new google.maps.Marker({
-              // icon: {
-              //   url: 'paw_print.png',
-              //   scaledSize: new google.maps.Size(50, 50)
-              // },
               position: petLocation,
               map: map,
               
