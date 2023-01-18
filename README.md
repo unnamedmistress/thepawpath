@@ -21,11 +21,11 @@ N/A
 
 ## Usage
 
-This Pet adoption app can be used to find any pet of your desire also the location directly.
-
+This Pet adoption app can be used to find any dog or cat of your desire in any location! To navigate this application, a user can click the "get started" button underneath the header image, which will redirect them to the search bar. Here the user can input the type of pet they are looking for, along with the zipcode of their location into the search bar inputs located on the left side of the screen. When the user clicks the search button, they are presented with cards of their desired animal type avaiable for adoption within 50 miles of their zipcode input. Each pet card provides the user with a picture of the animal, their name, gender, how many miles away from their zipcode they are, a brief scrollable description, the city, state, and zip code of their location, along with a clickable link to the pet adoption organization they are located at. A map will also be displayed for the user above the pet cards, with map markers for each pet adoption organization location. When a user clicks on the marker, the organization's address, phone number, and website are displayed. These url links in the marker info windows are clickable and will redirect the user to the pet adoption's website. The user can also find "About Us" and "Our Mission" pages in the navbar, which will provde them with further information about the project objectives and collaborators. Additionally, when the user clicks the "learn more" button underneath the header image, they are redirected to the "Our Mission" page.
+  
 ## Credits
 
-Chrysti Reichert,Ashlynn Wood, Justin Delgado and Francesco Tata.
+Chrysti Reichert, Ashlynn Wood, Justin Delgado and Francesco Tata.
 
 ## License
 
