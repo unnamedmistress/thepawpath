@@ -139,7 +139,6 @@ function callLocation(locationId,petImage,animalName, distance,description,anima
            // Create the info window for map marker
         var infoWindow = new google.maps.InfoWindow({
           content: `
-              <div>Organization Name: </div>
               <div><strong>${address}</strong></div>
               <div><strong>${phone}</strong></div>
               <div><a href="${url}"><strong>${url}</strong></a></div>
