@@ -7,8 +7,9 @@
 - We wanted to supply the user with information and direct location to the shelter.
 - We've made the ThePawPath app to show the capabilities of APIs and how current day technology is used to make webpages/apps that's beyond our imagination.
 
-## Screenshot    ![ScreenShot of page]
-<!-- ScreenShot goes here -->
+## Preview    
+![homepage screenshot] (images/homepage-screenshot.png)
+
 
 
 ## LINK  
