@@ -7,7 +7,7 @@
 - We've made the ThePawPath app to show the capabilities of APIs and how current day technology is used to make webpages/apps that's beyond our imagination.
 
 ## Preview   
-![homepage-screenshot] (images/homepage-screenshot.png)
+![homepage-screenshot](images/homepage-screenshot.png)
 
 
 ## LINK  
