@@ -111,13 +111,14 @@ function callLocation(locationId,petImage,animalName, distance,description,anima
           // Check to see if turning into address correctly
           console.log(address);
           let locationDiv = document.createElement('div');
+          locationDiv.classList.add('flex', 'flex-wrap');
           // locationDiv.className = "w-1/2 text-center mx-auto";
           
           locationDiv.innerHTML = `
-           <div id = 'eachPet'>
+           <div id = 'eachPet' class = "w-1/2">
 
           <img src="${petImage}" alt = 'pet'>
-          <p>Hi! My name is:<strong> ${animalName}</strong>.
+          <p id = 'scroll' >Hi! My name is:<strong> ${animalName}</strong>.
 
           <br>
           I am a ${animalGender}. 
@@ -138,7 +139,6 @@ function callLocation(locationId,petImage,animalName, distance,description,anima
            // Create the info window for map marker
         var infoWindow = new google.maps.InfoWindow({
           content: `
-              <div>Organization Name: </div>
               <div><strong>${address}</strong></div>
               <div><strong>${phone}</strong></div>
               <div><a href="${url}"><strong>${url}</strong></a></div>
