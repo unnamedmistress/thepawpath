@@ -20,6 +20,9 @@ function callAPI() {
   let div = document.createElement('div');
   div.style.border = '1px solid black';
   let petDiv = document.getElementById('currentpet');
+  if(localStorage.getItem("zip") == null) {
+    localStorage.setItem("zip", zip);
+  }
   fetch(`https://api.rescuegroups.org/v5/public/animals/search/${animal}s&sort=-animals.updatedDate`, {
     method: 'POST',
     headers: {
@@ -83,6 +86,14 @@ function callAPI() {
           });      
          
       }
+      let container = document.getElementById("container");
+      let zipDiv = document.createElement("button");
+      zipDiv.innerHTML = zip;
+      zipDiv.classList.add("text-white", "font-bold", "block", "w-full", "rounded-md", "border-gray-300", "pl-7", "pr-12", "py-2", "focus:border-indigo-500", "focus:ring-indigo-500", "sm:text-sm", "bg-indigo-600");
+      //append the button to the container
+      container.appendChild(zipDiv);
+      //add click event to the button
+      zipDiv.addEventListener("click", callAPI);
   });
 }
 
