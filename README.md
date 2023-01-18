@@ -1,5 +1,4 @@
-# thepawpath
-
+# The Paw Path
 
 ## Description
 
@@ -10,14 +9,11 @@
 ## Preview    
 ![homepage screenshot] (images/homepage-screenshot.png)
 
-
-
 ## LINK  
 https://unnamedmistress.github.io/thepawpath/
 
 
 ## Installation
-
 N/A
 
 ## Usage
