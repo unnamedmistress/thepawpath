@@ -104,7 +104,11 @@ function callLocation(locationId,petImage,animalName, distance,description,anima
           //add location URL, phone, street, city and zip to the page
           let url = location.data[0].attributes.url;
           if (!url.startsWith("http")) {
-            url = "https://" + url;
+            if (!url.startsWith("www.")){
+                url = "http://www." + url;
+            }else{
+                url = "http://" + url;
+            }
         }
           let phone = location.data[0].attributes.phone
           let street = location.data[0].attributes.street;
